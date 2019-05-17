@@ -1,14 +1,24 @@
-import React from 'react';
-import './App.css';
 
-function App() {
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from '../src/components/Home.js'
+import './App.css';
+import Customers from './components/Customers.js';
+
+class App extends Component{
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-          <h1> test server </h1>
-      </header>
+    <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/customer" component={Customers}/>
+        {/* <Route path="/:id" component={SingleCreature}/> */}
+      </Switch>
     </div>
+  </Router>
   );
+  }
 }
 
 export default App;
