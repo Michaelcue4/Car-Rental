@@ -1,4 +1,5 @@
 const Customer = require('../models/customer')
+const mongoose = require('mongoose')
 // const Reservation = require('../models/reservation')
 
 
@@ -11,7 +12,7 @@ const makeCustomerSampleData = async () => {
     await luke.save()
     const darth = new Customer({name: 'Darth Vader'})
     await darth.save()
+    await mongoose.disconnect();
 
 }
-
 makeCustomerSampleData();
