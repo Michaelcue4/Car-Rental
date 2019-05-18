@@ -11,13 +11,13 @@ class Customers extends Component{
     isCustomerFormDisplayed: false 
     }
     componentDidMount = () => {
-        axios.get('/api/customers').then(res => {
+        axios.get('/api/customer').then(res => {
             this.setState({customers: res.data})
         })
       }
       toggleCustomerForm = () => {
         this.setState((state, props) => {
-            return ({isCustomerFormDisplayed: !state.isCreatureFormDisplayed})
+            return ({isCustomerFormDisplayed: !state.isCustomerFormDisplayed})
         })
     }
   
@@ -27,15 +27,14 @@ class Customers extends Component{
       this.setState({newCustomer: cloneNewCustomer})
     }
   
-    createCreature = (e) => {
+    createCustomer = (e) => {
       e.preventDefault()
       axios
-          .post('/api/v1', {
-              name: this.state.newCreature.name,
-              description: this.state.newCreature.description
+          .post('/api/customer', {
+              name: this.state.newCustomer.name,
           })
           .then(res => {
-              const customerList = [...this.state.customer]
+              const customerList = [...this.state.customers]
               customerList.unshift(res.data)
               this.setState({
                   newCustomer: {
