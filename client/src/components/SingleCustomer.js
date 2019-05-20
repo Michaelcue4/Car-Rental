@@ -39,7 +39,7 @@ class SingleCustomer extends Component {
       e.preventDefault()
       axios
         .put(`/api/customers/${this.props.match.params.id}`, {
-            name: this.state.Customer.name
+            name: this.state.customer.name
         })
         .then(res => {
             this.setState({customer: res.data, isEditFormDisplayed: false})
