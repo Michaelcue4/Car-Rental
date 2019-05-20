@@ -11,7 +11,7 @@ class Customers extends Component{
     isCustomerFormDisplayed: false 
     }
     componentDidMount = () => {
-        axios.get('/api/customer').then(res => {
+        axios.get('/api/customer/customer').then(res => {
             this.setState({customers: res.data})
         })
       }
@@ -30,7 +30,7 @@ class Customers extends Component{
     createCustomer = (e) => {
       e.preventDefault()
       axios
-          .post('/api/customer', {
+          .post('/api/customer/customer', {
               name: this.state.newCustomer.name,
           })
           .then(res => {
