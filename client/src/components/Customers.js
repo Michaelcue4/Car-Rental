@@ -11,7 +11,7 @@ class Customers extends Component{
     isCustomerFormDisplayed: false 
     }
     componentDidMount = () => {
-        axios.get('/api/customer/customer').then(res => {
+        axios.get('api/customers').then(res => {
             this.setState({customers: res.data})
         })
       }
@@ -30,7 +30,7 @@ class Customers extends Component{
     createCustomer = (e) => {
       e.preventDefault()
       axios
-          .post('/api/customer/customer', {
+          .post('api/customers', {
               name: this.state.newCustomer.name,
           })
           .then(res => {
@@ -49,13 +49,13 @@ class Customers extends Component{
     render() {
         return (
           <div>
-            <h1>Add Name</h1>
+            <h1> New / Existing Customer</h1>
             {
                 this.state.customers.map(customers => {
                     return (
                         <div key={customers._id}>
                             <Link
-                                to={`/${customers._id}`}
+                                to={`/customers/${customers._id}`}
                             >
                                 {customers.name}
                             </Link>
@@ -80,7 +80,9 @@ class Customers extends Component{
                         <button>Create</button>
                     </form>
                     : null
-            }
+            }<div>
+            <Link to ="/"> Home </Link>
+            </div>
           </div>
         )
       }
