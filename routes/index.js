@@ -10,6 +10,8 @@ router.put('/customers/:id', customerController.update);
 router.delete('/customers/:id', customerController.delete);
 
 router.get('/customers/reservation', reservationController.index)
+router.post('/customers/reservation',reservationController.create)
+router.get('customers/reservation/:id', reservationController.show)
 
 
 module.exports = router;
