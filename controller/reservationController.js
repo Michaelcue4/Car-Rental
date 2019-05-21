@@ -29,10 +29,10 @@ create: async (req, res) => {
   },
   update: async (req, res) => {
     try {
-      const customerId = req.params.id
-      const updatedCustomer = req.body
-      const savedCustomer = await Customer.findByIdAndUpdate(customerId, updatedCustomer, {new: true})
-      res.json(savedCustomer)
+      const reservationId = req.params.id
+      const updatedReservation = req.body
+      const savedReservation = await Reservations.findByIdAndUpdate(reservationId, updatedReservation, {new: true})
+      res.json(savedReservation)
     } catch (err) {
       console.log(err)
       res.status(500).json(err)

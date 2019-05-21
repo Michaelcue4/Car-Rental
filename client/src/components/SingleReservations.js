@@ -2,23 +2,27 @@ import React, { Component } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import axios from "axios";
 
-class SingleCustomer extends Component {
+class SingleReservation extends Component {
   state = {
-      customer: {
-          name: ''
+      reservation: {
+        customerName: '',
+        carName: '',
+        model: '',
+        year: '',
+        date: ''
       },
       redirectToHome: false,
       isEditFormDisplayed: false
   }
 
   componentDidMount = () => {
-      axios.get(`/api/customers/reservation/${this.props.match.params.id}`).then(res => {
-          this.setState({customer: res.data})
+      axios.get(`/api/reservation/${this.props.match.params.id}`).then(res => {
+          this.setState({reservation: res.data})
       })
   }
 
-  deleteCustomer = () => {
-      axios.delete(`/api/customers/reservation/${this.props.match.params.id}`).then(res => {
+  deleteReservation = () => {
+      axios.delete(`/api/reservation/${this.props.match.params.id}`).then(res => {
           this.setState({redirectToHome: true})
       })
   }
@@ -29,54 +33,55 @@ class SingleCustomer extends Component {
       })
   }
 
-  handleChange = (e) => {
-      const cloneCustomer = {...this.state.Customer}
-      cloneCustomer[e.target.name] = e.target.value
-      this.setState({customer: cloneCustomer})
+  handleChange = e => {
+      const cloneReservation = {...this.state.reservation}
+      cloneReservation[e.target.name] = e.target.value
+      this.setState({reservation: cloneReservation})
   }
 
-  updateCustomer = (e) => {
+  updateReservation = (e) => {
       e.preventDefault()
       axios
-        .put(`/api/customers/reservation/${this.props.match.params.id}`, {
-            name: this.state.customer.name
+        .put(`/api/reservation/${this.props.match.params.id}`, {
+            customerName: this.state.reservation.customerName
         })
         .then(res => {
-            this.setState({customer: res.data, isEditFormDisplayed: false})
+            this.setState({reservation: res.data, isEditFormDisplayed: false})
         })
   }
 
   render() {
     if(this.state.redirectToHome) {
-        return (<Redirect to="/customer/reservation" />)
+        return (<Redirect to="/reservation" />)
     }
 
     return (
       <div>
-        <Link to="/customer">Customers</Link>
-        <Link to="/customer/reservation"> Reservations</Link>
-        <h1>Single customer</h1>
+        <Link to="/">Home</Link>
+        <Link to="/reservation"> Reservations</Link>
+        <h1>Reservation</h1>
         <button onClick={this.toggleEditForm}>Edit</button>
         {
             this.state.isEditFormDisplayed
-                ? <form onSubmit={this.updateCustomer}>
-                    <div>
-                        <label htmlFor="name">Name</label>
+                ? <form onSubmit={this.updateReservation}>
+                        <label htmlFor="customerName">Name</label>
                         <input
-                            id="name"
+                            id="customerName"
                             type="text"
-                            name="name"
+                            name="customerName"
                             onChange={this.handleChange}
-                            value={this.state.customer.name}
+                            value={this.state.reservation.customerName}
                         />
-                    </div>
                     <button>Update</button>
                 </form>
                 : <div>
                     <div>
-                        Name: {this.state.customer.name}
-                    </div>
-                    <button onClick={this.deleteCustomer}>Delete</button>
+                        Name : {this.state.reservation.customerName}
+                        </div>
+                       <div >car : {this.state.reservation.carName}</div>
+                        <div>model : {this.state.reservation.model}</div>
+                        <div>year : {this.state.reservation.year}</div>
+                    <button onClick={this.deleteReservation}>Delete</button>
                 </div>
         }
       </div>
@@ -84,4 +89,4 @@ class SingleCustomer extends Component {
   }
 }
 
-export default SingleCustomer;
+export default SingleReservation;

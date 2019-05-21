@@ -6,6 +6,7 @@ class Reservations extends Component{
  state = {
     reservation: [],
     newReservation: {
+        customerName: '',
         carName: '',
         model: '',
         year: '',
@@ -16,7 +17,7 @@ class Reservations extends Component{
     }
     componentDidMount = () => {
         axios.get('api/reservation').then(res => {
-            this.setState({reservations: res.data})
+            this.setState({reservation: res.data})
         })
       }
       toggleReservationForm = () => {
@@ -31,10 +32,11 @@ class Reservations extends Component{
       this.setState({newReservation: cloneNewReservation})
     }
   
-    createCustomer = (e) => {
+    createReservation = (e) => {
       e.preventDefault()
       axios
           .post('api/reservation', {
+              customerName: this.state.newReservation.customerName,
               carName: this.state.newReservation.carName,
               model: this.state.newReservation.model,
               year: this.state.newReservation.year,
@@ -46,6 +48,7 @@ class Reservations extends Component{
               reservationList.unshift(res.data)
               this.setState({
                   newReservation: {
+                    customerName:'',
                     carName: '',
                     model: '',
                     year: '',
@@ -53,7 +56,7 @@ class Reservations extends Component{
                     description:''
                   },
                   isReservationFormDisplayed: false,
-                  reservations: reservationList
+                  reservation: reservationList
               })
           })
   
@@ -88,6 +91,7 @@ class Reservations extends Component{
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.carName}
                             />
+                        <div>
                             <label htmlFor="model">Model</label>
                             <input
                                 id="model"
@@ -96,6 +100,8 @@ class Reservations extends Component{
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.model}
                             />
+                        </div>
+                        <div>
                             <label htmlFor="year">Year</label>
                             <input
                                 id="year"
@@ -104,6 +110,8 @@ class Reservations extends Component{
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.year}
                             />
+                        </div>
+                        <div>
                             <label htmlFor="date">Date</label>
                             <input
                                 id="date"
@@ -112,6 +120,17 @@ class Reservations extends Component{
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.date}
                             />
+                        </div>
+                        <div>
+                            <label htmlFor="customerName">Name</label>
+                            <input
+                                id="customerName"
+                                type="text"
+                                name="customerName"
+                                onChange={this.handleChange}
+                                value={this.state.newReservation.customerName}
+                            />
+                        </div>
                         </div>
                         <button> Send </button>
                     </form>

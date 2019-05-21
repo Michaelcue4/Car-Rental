@@ -15,6 +15,7 @@ const makeCustomerSampleData = async () => {
     console.log(luke, darth);
     await Reservation.deleteMany()
     const astonMartin = new Reservation ({
+        customerName: 'Jay',
         carName: 'Aston Martin',
         model: 'V12 Vantage',
         year: 2012,
