@@ -8,7 +8,7 @@ class Home extends Component{
             <div>
                 <h1> Exotic Rentals</h1>
                 <Link to ="/customer"> Make Customer Inquiry </Link>
-                <Link to ="/customer/reservation">  Make Reservation </Link>
+                <Link to ="/reservation">  Make Reservation </Link>
                 
             </div>
                 )

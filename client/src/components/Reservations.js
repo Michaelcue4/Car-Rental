@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-class Reservation extends Component{
+class Reservations extends Component{
  state = {
     reservation: [],
     newReservation: {
@@ -63,7 +63,7 @@ class Reservation extends Component{
           <div>
             <h1> Create a Reservation</h1>
             {
-                this.state.reservations.map(reservations => {
+                this.state.reservation.map(reservations => {
                     return (
                         <div key={reservations._id}>
                             <Link
@@ -80,7 +80,7 @@ class Reservation extends Component{
                 this.state.isReservationFormDisplayed
                     ? <form onSubmit={this.createReservation}>
                         <div>
-                            <label htmlFor="carName">Car Model</label>
+                            <label htmlFor="carName">Exotic Vehicle</label>
                             <input
                                 id="carName"
                                 type="text"
@@ -96,7 +96,7 @@ class Reservation extends Component{
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.model}
                             />
-                            <label htmlFor="year">Name</label>
+                            <label htmlFor="year">Year</label>
                             <input
                                 id="year"
                                 type="text"
@@ -110,7 +110,7 @@ class Reservation extends Component{
                                 type="text"
                                 name="date"
                                 onChange={this.handleChange}
-                                value={this.state.newReservation.year}
+                                value={this.state.newReservation.date}
                             />
                         </div>
                         <button> Send </button>
@@ -125,4 +125,4 @@ class Reservation extends Component{
     
   
 }
-export default Reservation
+export default Reservations
