@@ -2,7 +2,8 @@ const Reservations = require('../models/reservation')
 
 const reservationController = {
 index: async(req, res) => {
-    res.json(await Reservations.find());
+    // console.log(await Reservations.find({}));
+    res.json(await Reservations.find({}));
 },
 show: async(req, res) => {
     try{

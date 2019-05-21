@@ -8,7 +8,7 @@ const Reservations = new Schema({
     year: Number,
     date: String,
     description: String,
-    customerId: [Schema.Types.ObjectId]
+    customerId: Schema.Types.ObjectId
 })
 
 module.exports = mongoose.model('Reservations', Reservations)
