@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from '../src/components/Home.js'
+import Home from './components/Home.js'
 import './App.css';
 import Customers from './components/Customers.js';
 import SingleCustomer from './components/SingleCustomer.js';
