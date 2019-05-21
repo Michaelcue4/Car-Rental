@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './components/Home'
+import Home from './components/Home.js'
 import './App.css';
-import Customers from './components/Customers';
-import SingleCustomer from './components/SingleCustomer';
-import SingleReservation from './components/SingleReservations';
+import Customers from './components/Customers.js';
+import SingleCustomer from './components/SingleCustomer.js';
+import SingleReservation from './components/SingleReservations.js';
 import Reservation from './components/Reservations.js';
 
 class App extends Component{
