@@ -1,6 +1,6 @@
 const mongoose = require('../db/connection')
 const Schema = mongoose.Schema
-const ObjectId = mongoose.Schema.Types.ObjectId
+
 
 const Reservations = new Schema({
     carName: String,
@@ -8,7 +8,7 @@ const Reservations = new Schema({
     year: Number,
     date: String,
     description: String,
-    customerId: ObjectId
+    customerId: [Schema.Types.ObjectId]
 })
 
 module.exports = mongoose.model('Reservations', Reservations)

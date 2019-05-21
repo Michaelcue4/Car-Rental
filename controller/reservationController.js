@@ -1,12 +1,12 @@
-const Reservation = require('../models/reservation')
+const Reservations = require('../models/reservation')
 
 const reservationController = {
 index: async(req, res) => {
-    res.json(await Reservation.find());
+    res.json(await Reservations.find());
 },
 show: async(req, res) => {
     try{
-        res.json(await Reservation.findById(req.params.id));
+        res.json(await Reservations.findById(req.params.id));
     } catch(err){
         console.log(err);
         res.json(err);
@@ -15,7 +15,7 @@ show: async(req, res) => {
 create: async (req, res) => {
     try {
       const newReservation = req.body
-      const savedReservation = await Reservation.create(newReservation)
+      const savedReservation = await Reservations.create(newReservation)
       res.json(savedReservation)
     } catch (err) {
       console.log(err)
@@ -25,8 +25,8 @@ create: async (req, res) => {
   show: async (req, res) => {
     try {
       const reservationId = req.params.id
-      const reservation = await reservation.findById(reservationId)
-      res.json(customer)
+      const reservation = await Reservations.findById(reservationId)
+      res.json(reservation)
     } catch (err) {
       console.log(err)
       res.json(err)
@@ -35,11 +35,10 @@ create: async (req, res) => {
   delete: async (req, res) => {
     try {
       const reservationId = req.params.id
-      console.log(await Reservation.findByIdAndRemove(reservationId))
+      console.log(await Reservations.findByIdAndRemove(reservationId))
       res.json({
         msg: 'Deleted'
       })
-      //res.json(await Customer.findByIdAndDelete(req.params.id));
     } catch (err) {
       console.log(err)
       res.status(500).json(err)
