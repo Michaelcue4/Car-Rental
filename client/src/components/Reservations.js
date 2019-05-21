@@ -15,7 +15,7 @@ class Reservation extends Component{
     isReservationFormDisplayed: false 
     }
     componentDidMount = () => {
-        axios.get('api/customers/reservation').then(res => {
+        axios.get('api/reservation').then(res => {
             this.setState({reservations: res.data})
         })
       }
@@ -34,8 +34,12 @@ class Reservation extends Component{
     createCustomer = (e) => {
       e.preventDefault()
       axios
-          .post('api/customers/reservation', {
-              name: this.state.newCustomer.name,
+          .post('api/reservation', {
+              carName: this.state.newReservation.carName,
+              model: this.state.newReservation.model,
+              year: this.state.newReservation.year,
+              date: this.state.newReservation.date,
+
           })
           .then(res => {
               const reservationList = [...this.state.reservation]
@@ -57,15 +61,15 @@ class Reservation extends Component{
     render() {
         return (
           <div>
-            <h1> New / Existing Customer</h1>
+            <h1> Create a Reservation</h1>
             {
                 this.state.reservations.map(reservations => {
                     return (
                         <div key={reservations._id}>
                             <Link
-                                to={`/customers/reservation/${reservations._id}`}
+                                to={`/reservation/${reservations._id}`}
                             >
-                                {reservations.name}
+                                {reservations.carName}
                             </Link>
                         </div>
                     )
@@ -78,35 +82,38 @@ class Reservation extends Component{
                         <div>
                             <label htmlFor="carName">Car Model</label>
                             <input
-                                id="name"
+                                id="carName"
                                 type="text"
                                 name="carName"
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.carName}
-                            /><label htmlFor="name">Name</label>
+                            />
+                            <label htmlFor="model">Model</label>
                             <input
-                                id="name"
+                                id="model"
                                 type="text"
-                                name="name"
-                                onChange={this.handleChange}
-                                value={this.state.newReservation.date}
-                            /><label htmlFor="name">Name</label>
-                            <input
-                                id="name"
-                                type="text"
-                                name="name"
+                                name="model"
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.model}
-                            /><label htmlFor="name">Name</label>
+                            />
+                            <label htmlFor="year">Name</label>
                             <input
-                                id="name"
+                                id="year"
                                 type="text"
-                                name="name"
+                                name="year"
+                                onChange={this.handleChange}
+                                value={this.state.newReservation.year}
+                            />
+                            <label htmlFor="date">Date</label>
+                            <input
+                                id="date"
+                                type="text"
+                                name="date"
                                 onChange={this.handleChange}
                                 value={this.state.newReservation.year}
                             />
                         </div>
-                        <button>Create</button>
+                        <button> Send </button>
                     </form>
                     : null
             }<div>

@@ -7,8 +7,9 @@ class Home extends Component{
         return (
             <div>
                 <h1> Exotic Rentals</h1>
-                <Link to ="/customer"> Customer / Reservation </Link>
-                {/* /* <Link to="/ProjectsToStart">Projects To Start</Link> */ }
+                <Link to ="/customer"> Make Customer Inquiry </Link>
+                <Link to ="/customer/reservation">  Make Reservation </Link>
+                
             </div>
                 )
             }

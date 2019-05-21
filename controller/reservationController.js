@@ -1,10 +1,14 @@
 const Reservations = require('../models/reservation')
 
 const reservationController = {
-index: async(req, res) => {
-    // console.log(await Reservations.find({}));
-    res.json(await Reservations.find({}));
-},
+    index: async (req, res) => {
+        try {
+          const reservations = await Reservations.find({})
+          res.json(reservations)
+        } catch (err) {
+          console.log(err)
+        }
+      },
 show: async(req, res) => {
     try{
         res.json(await Reservations.findById(req.params.id));
@@ -18,6 +22,17 @@ create: async (req, res) => {
       const newReservation = req.body
       const savedReservation = await Reservations.create(newReservation)
       res.json(savedReservation)
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err)
+    }
+  },
+  update: async (req, res) => {
+    try {
+      const customerId = req.params.id
+      const updatedCustomer = req.body
+      const savedCustomer = await Customer.findByIdAndUpdate(customerId, updatedCustomer, {new: true})
+      res.json(savedCustomer)
     } catch (err) {
       console.log(err)
       res.status(500).json(err)

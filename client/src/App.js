@@ -5,6 +5,7 @@ import Home from '../src/components/Home.js'
 import './App.css';
 import Customers from './components/Customers.js';
 import SingleCustomer from './components/SingleCustomer.js';
+import Reservation from './components/reservations.js';
 
 class App extends Component{
   render(){
@@ -15,6 +16,8 @@ class App extends Component{
         <Route exact path="/" component={Home}/>
         <Route exact path="/customer" component={Customers}/>
         <Route exact path = "/customers/:id" component = {SingleCustomer}/>
+        <Route exact path = "/customer/reservation" component = {Reservation}/>
+        <Route exact path = "/customer/reservation/:id" component = {SingleReservation}/>
         {/* <Route exact path ="/" component = {About}/> */}
       </Switch>
     </div>
