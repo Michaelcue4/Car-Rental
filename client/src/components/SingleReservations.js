@@ -56,14 +56,19 @@ class SingleReservation extends Component {
     }
 
     return (
-      <div>
+      <div className = 'Homepage'>
+          <div className = 'middleName'>
         <Link to="/">Home</Link>
         <Link to="/reservation"> Reservations</Link>
+        </div>
         <h1>Reservation</h1>
+        <div className = 'button'>
         <button onClick={this.toggleEditForm}>Edit</button>
+        </div>
         {
             this.state.isEditFormDisplayed
-                ? <form onSubmit={this.updateReservation}>
+                ?<div className = 'button'> 
+                <form onSubmit={this.updateReservation}>
                         <label htmlFor="customerName">Name</label>
                         <input
                             id="customerName"
@@ -72,16 +77,22 @@ class SingleReservation extends Component {
                             onChange={this.handleChange}
                             value={this.state.reservation.customerName}
                         />
+                        
                     <button>Update</button>
+                    
+                
                 </form>
-                : <div>
-                    <div>
+                </div>
+                : <div className = 'RevWords'>
+                    <div className = 'newBorder'>
                         Name : {this.state.reservation.customerName}
                         </div>
-                       <div >car : {this.state.reservation.carName}</div>
-                        <div>model : {this.state.reservation.model}</div>
-                        <div>year : {this.state.reservation.year}</div>
+                       <div className = 'newBorder' >car : {this.state.reservation.carName}</div>
+                        <div className = 'newBorder'>model : {this.state.reservation.model}</div>
+                        <div className = 'newBorder'>year : {this.state.reservation.year}</div>
+                        <div className = 'button'>
                     <button onClick={this.deleteReservation}>Delete</button>
+                    </div>
                 </div>
         }
       </div>

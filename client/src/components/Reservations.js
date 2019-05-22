@@ -63,7 +63,7 @@ class Reservations extends Component{
     }
     render() {
         return (
-          <div>
+          <div className = 'Homepage'>
             <h1> Create a Reservation</h1>
             {
                 this.state.reservation.map(reservations => {
@@ -78,6 +78,7 @@ class Reservations extends Component{
                     )
                 })
             }
+            <div className = 'button'>
             <button onClick={this.toggleReservationForm}>+ New Reservation</button>
             {
                 this.state.isReservationFormDisplayed
@@ -135,7 +136,8 @@ class Reservations extends Component{
                         <button> Send </button>
                     </form>
                     : null
-            }<div>
+            }</div>
+            <div className = 'back'>
             <Link to ="/"> Home </Link>
             </div>
           </div>

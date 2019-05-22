@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-image: url("https://images.hgmsites.net/hug/mclaren-p1-laps-the-nrburgring_100448991_h.jpg");
 }
 
 .App-logo {
@@ -9,6 +10,7 @@
 }
 
 .App-header {
+  
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -30,4 +32,63 @@
   to {
     transform: rotate(360deg);
   }
+}
+*{
+  text-decoration: none;
+   color:inherit;
+  
+}
+.Homepage{
+  color:yellow;
+  margin:160px;
+  opacity: 0.7;
+}
+body{
+  background-image: url("https://images.hgmsites.net/hug/mclaren-p1-laps-the-nrburgring_100448991_h.jpg");
+  background-size: 1600px 1000px
+}
+.back{
+  font-size: 100px;
+  color:pink;
+}
+h1{
+  font-size: 60px;
+  text-shadow:
+		-1spx -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+
+  
+
+  color:yellow;
+}
+.middleName{
+  color:white;
+  font-size: 25px;
+  filter:opacity(100%);
+  
+  
+}
+.button{
+  color:red;
+
+}
+.title{
+  font-size: 20px;
+  color:pink;
+  
+}
+.RevWords{
+  font-size:30px;
+  color: green;
+  filter: saturate(60%);
+  
+  background-color: white;
+  width: 240px;
+}
+.newBorder{
+  border:solid red 1px;
+
+  
 }

@@ -7,22 +7,27 @@ import Customers from './components/Customers.js';
 import SingleCustomer from './components/SingleCustomer.js';
 import SingleReservation from './components/SingleReservations.js';
 import Reservation from './components/Reservations.js';
+import styled from 'styled-components';
 
 class App extends Component{
   render(){
   return (
+    
     <Router>
     <div>
+      
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route exact path="/customer" component={Customers}/>
         <Route exact path = "/customers/:id" component = {SingleCustomer}/>
         <Route exact path = "/reservation" component = {Reservation}/>
         <Route exact path = "/reservation/:id" component = {SingleReservation}/>
-        {/* <Route exact path ="/" component = {About}/> */}
+        
       </Switch>
+      
     </div>
   </Router>
+  
   );
   }
 }

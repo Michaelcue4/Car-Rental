@@ -48,11 +48,17 @@ class Customers extends Component{
     }
     render() {
         return (
-          <div>
+          <div className = 'Homepage'>
             <h1> New / Existing Customer</h1>
+            <h2>Available Inventory -- Please Select </h2>
+            <p>Lamborghini  - Hurracan  - Aventador  - Murcelaigo  --900$ Per Day </p> 
+            <p>McClaren -  P1  - 720s  - 520s -- 1000 Per Day </p>
+            <p>LandRover - RangeRover -- 400 Per Day </p>
             {
                 this.state.customers.map(customers => {
                     return (
+                    <div className = 'middleName'>
+                    
                         <div key={customers._id}>
                             <Link
                                 to={`/customers/${customers._id}`}
@@ -60,9 +66,11 @@ class Customers extends Component{
                                 {customers.name}
                             </Link>
                         </div>
+                    </div>
                     )
                 })
             }
+            <div className = 'button'>
             <button onClick={this.toggleCustomerForm}>+ New Customer</button>
             {
                 this.state.isCustomerFormDisplayed
@@ -77,10 +85,15 @@ class Customers extends Component{
                                 value={this.state.newCustomer.name}
                             />
                         </div>
-                        <button>Create</button>
+                        
+                        <button>Create</button> 
                     </form>
+                   
+                    
                     : null
-            }<div>
+            } 
+            </div>
+            <div className = 'back'>
             <Link to ="/"> Home </Link>
             </div>
           </div>

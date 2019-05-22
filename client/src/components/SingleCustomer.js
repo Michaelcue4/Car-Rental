@@ -52,9 +52,12 @@ class SingleCustomer extends Component {
     }
 
     return (
-      <div>
+      <div className = 'Homepage'>
+      <div className = 'title'>
         <Link to="/customer">Customers/Reservations</Link>
+        </div>
         <h1>Single customer</h1>
+        <div className = 'button'>
         <button onClick={this.toggleEditForm}>Edit</button>
         {
             this.state.isEditFormDisplayed
@@ -72,12 +75,13 @@ class SingleCustomer extends Component {
                     <button>Update</button>
                 </form>
                 : <div>
-                    <div>
+                    <div className = 'middleName'>
                         Name: {this.state.customer.name}
                     </div>
                     <button onClick={this.deleteCustomer}>Delete</button>
                 </div>
         }
+        </div>
       </div>
     );
   }
