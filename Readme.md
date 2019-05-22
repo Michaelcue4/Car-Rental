@@ -10,7 +10,7 @@ The goal of this project was to create a Rental website, and for the customer to
 
 ### Improvements 
 For improving upon this, 
--I would like to add a form for an email
--A Inventory page that actually shows pictures of multiple cars 
+- I would like to add a form for an email
+- A Inventory page that actually shows pictures of multiple cars 
 - Calendar to display when the vehicle is not avaiable 
 
